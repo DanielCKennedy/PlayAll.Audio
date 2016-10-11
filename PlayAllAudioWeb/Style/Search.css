@@ -1,0 +1,75 @@
+﻿div#search-wrapper {
+    height:auto;
+    margin:10px 5px 0px 5px;
+}
+
+#search-wrapper input {
+    width: calc(100% - 300px);
+    min-width:150px;
+    overflow:hidden;
+    text-wrap:none;
+    overflow-x:hidden;
+    height:40px;
+    white-space: pre;
+    word-wrap: normal;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position:relative;
+    top:-22px;
+    border:2px solid #212121;
+    resize:none;
+    padding-left:5px;
+}
+
+#search-wrapper button {
+    margin-left:10px;
+    height:auto;
+    width:auto;
+    position:relative;
+    top:-10px;
+    background:transparent;
+    border:0px;
+}
+
+div#results-wrapper {
+    width:100%;
+    height: calc(100% - 150px);
+}
+
+#results-wrapper ul {
+    list-style: none;
+    overflow: hidden;
+    overflow-y: auto;
+    height:100%;
+    color:black;
+    margin-left: -35px;
+}
+
+#results-wrapper li {
+    margin-bottom:10px;
+    padding:10px;
+    background-color:white;
+    border:1px solid grey;
+}
+
+#results-wrapper li:hover {
+    border: 5px solid #212121;
+    opacity:0.8;
+}
+
+#loading {
+    position:absolute;
+    top:5px;
+    left:-45px;
+}
+
+#artwork {
+    position:relative;
+    height:40px;
+    width:40px;
+    top:calc(50%)
+}
+
+.up10 {
+    position:relative;
+    top:-10px;
+}

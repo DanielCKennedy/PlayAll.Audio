@@ -1,0 +1,19 @@
+﻿.section {
+    background:white;
+    padding:0px 15px 15px 15px;
+    border: 1px solid #212121;
+}
+
+ul {
+    list-style:circle;
+}
+
+ol li {
+    margin-bottom:8px;
+}
+
+h2 {
+    margin-top:5px;
+    margin-bottom:5px;
+    text-decoration: underline;
+}

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="Style/Search.css" rel="stylesheet" type="text/css" />
+	<meta charset="utf-8" />
+</head>
+<body>
+
+    <div id="search-wrapper">
+        <img id="loading"
+             src="Assets/loading_41x39.gif"
+             ng-show="isLoading" />
+        <input type="text" class="font30" placeholder="search..." ng-model="query" ng-keypress="$event.keyCode == 13 && searchAll()" />
+        <button ng-click="searchSoundCloud()"><img src="Assets/sc_st_gradient_100x60.png" /></button>
+        <button ng-click="searchYouTube()"><img src="Assets/YouTube-logo-full_color_120x52.png" /></button>
+    </div>
+
+    <div id="results-wrapper">
+        <ul>
+            <li ng-repeat="song in results"
+                ng-click="addThis($index)">
+                <div class="stack-horizontal right">
+                    <img ng-src="{{song.Source == 1 && '../Assets/sc_gradient_48x24.png' || '../Assets/YouTube-social-icon_red_48px.png'}}"
+                         ng-class="{'up10' : song.Source == 2}"/>
+                </div>
+                <div class="stack-horizontal left">
+                    <div class="stack-horizontal visible" style="margin:5px;">
+                        <img id="artwork" ng-src="{{song.Artwork && song.Artwork || '../Assets/play_40x40.png'}}" />
+                    </div>
+                    <div class="stack-horizontal">
+                        <b>{{song.Title}}</b>
+                        <br />
+                        <span>{{song.User}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

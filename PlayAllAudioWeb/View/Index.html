@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>playall.audio</title>
+	<meta charset="utf-8" />
+    <link href="Style/Index.css" rel="stylesheet" type="text/css"/>
+    <link href="Style/PlaylistBar.css" rel="stylesheet" type="text/css" />
+    <script src="http://w.soundcloud.com/player/api.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="Lib/Angular/angular.min.js"></script>
+    <script src="Lib/Angular/angular-route.min.js"></script>
+    <script src="../Lib/Angular/angular-cookies.min.js"></script>
+    <script src="App.js"></script>
+    <script src="Service/PlaylistService.js"></script>
+    <script src="Service/SoundCloudService.js"></script>
+    <script src="Service/YouTubeService.js"></script>
+    <script src="Controller/SearchController.js"></script>
+    <script src="Controller/PlaylistController.js"></script>
+</head>
+<body ng-app="PlayAllAudio">
+    <div id="logo-wrapper" ng-controller="PlaylistController">
+        <a href="#/"><img src="../Assets/playall_logo_195x93.png" /></a>
+    </div>
+    
+    <div id="playlistBar" ng-controller="PlaylistController">
+        <div style="position:fixed;width:20px;height:100%;bottom:0px;background-color:#212121;z-index:9999;opacity:1;border-right:3px solid #424242"
+              ng-click="collapse()"></div>
+        <div id="collapsable">
+        <div id="currentSong">
+            <div id="player-wrapper">
+                <div id="YT-wrapper"
+                     ng-show="selected.song.Source == 2">
+                    <div id="YT-player" class="stack-horizontal"></div>
+                </div>
+                <iframe id="SC-player"
+                        frameborder="0"
+                        ng-show="selected.song.Source == 1"
+                        src="https://w.soundcloud.com/player/?url="></iframe>
+            </div>
+
+            <div id="songInfo-wrapper" class="font20">
+                <b>{{selected.song.Title}}</b>
+                <br />
+                <span>{{selected.song.User}}</span>
+                <br />
+            </div>
+        </div>
+
+        <div id="controls">
+            <ul>
+                <li>
+                    <button id="prev" ng-click="previous()"><b>&#8810;</b></button>
+                </li>
+                <li>
+                    <button id="toggle" ng-click="toggle()"><img src="Assets/toggle_30x30.png" /></button>
+                </li>
+                <li>
+                    <button id="next" ng-click="next()"><b>&#8811;</b></button>
+                </li>
+            </ul>
+        </div>
+
+        <div id="playlist-wrapper">
+            <ul sv-root sv-part="collection">
+                <li ng-repeat="song in collection" sv-element draggable="false"
+                    ng-click="selectThis($index)"
+                    ng-class="{'selectedItem': $index == this.selected.index}">
+                    <div class="stack-horizontal right visible-on-hover blue-on-hover"
+                         ng-click="removeThis($index)">
+                        <b>&#9747;</b>
+                    </div>
+                    <div class="stack-horizontal left">
+                        <b>{{song.Title}}</b>
+                        <br />
+                        <span>{{song.User}}</span>
+                        <br />
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+
+    <div id="navBar">
+        <ul class="font30">
+            <li>
+                <hr />
+            </li>
+            <li>
+                <a href="#search">Search</a>
+            </li>
+            <li>
+                <hr />
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+        </ul>
+    </div>
+
+    <br /><br />
+    <div ng-view id="pageArea"></div>
+    
+</body>
+</html>
